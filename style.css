@@ -1,0 +1,406 @@
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body.nepali {
+      font-family: 'Noto Sans Devanagari', 'Segoe UI', sans-serif;
+    }
+    .container {
+      width: 100%;
+      max-width: 1000px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      margin-bottom: 10px;
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, #64ffda, #ff6b6b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+    .subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+    /* Language Switch */
+    .language-switch {
+      margin: 15px 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .lang-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid transparent;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    .lang-btn.active {
+      background: rgba(100, 255, 218, 0.3);
+      border-color: #64ffda;
+      box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+    }
+    .lang-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+    /* Time Mode Selector */
+    .time-mode {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .time-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(100, 255, 218, 0.5);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 15px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      min-width: 50px;
+    }
+    .time-btn.active {
+      background: #64ffda;
+      color: #1a1a1a;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+    }
+    .time-btn:hover {
+      background: rgba(100, 255, 218, 0.2);
+      transform: scale(1.05);
+    }
+    /* Stats */
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 25px;
+      font-size: 1.2rem;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 15px 25px;
+      border-radius: 15px;
+      min-width: 90px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .stat div:first-child {
+      font-weight: bold;
+      font-size: 1.4em;
+      color: #64ffda;
+    }
+    /* Timer Display */
+    .timer-display {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      color: #ff6b6b;
+      font-weight: bold;
+    }
+    /* Progress Bar */
+    .progress-bar {
+      height: 8px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      margin-bottom: 25px;
+      overflow: hidden;
+    }
+    .progress {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #64ffda, #ff6b6b);
+      transition: width 0.2s ease;
+      border-radius: 4px;
+    }
+    /* Test Area */
+    #test-area {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 25px;
+      border-radius: 15px;
+      font-size: 1.6rem;
+      line-height: 2.2rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 30px;
+      text-align: left;
+      min-height: 180px;
+      max-height: 250px;
+      overflow-y: auto;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+    .word-display {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .word {
+      padding: 4px 8px;
+      margin: 2px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .word.current {
+      background: rgba(100, 255, 218, 0.3);
+      border: 2px solid #64ffda;
+      box-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+    }
+    .word.correct {
+      color: #64ffda;
+      background: rgba(100, 255, 218, 0.1);
+    }
+    .word.wrong {
+      color: #ff6b6b;
+      text-decoration: line-through;
+      background: rgba(255, 107, 107, 0.1);
+    }
+    /* English Mode Styles */
+    .char {
+      display: inline-block;
+      min-width: 1ch;
+      height: 1.6rem;
+      text-align: center;
+    }
+    .untyped { color: rgba(255, 255, 255, 0.6); }
+    .correct { color: #64ffda; }
+    .incorrect { color: #ff6b6b; text-decoration: underline; }
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.6rem;
+      background: white;
+      animation: blink 1s step-end infinite;
+      vertical-align: bottom;
+      margin: 0 1px;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    /* I     */
+    #nepali-input {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.4rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(100, 255, 218, 0.3);
+      border-radius: 10px;
+      color: white;
+      outline: none;
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      margin-top: 15px;
+      display: none;
+    }
+   
+    /* Results */
+    #results {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #64ffda;
+      padding: 15px;
+      background: rgba(100, 255, 218, 0.1);
+      border-radius: 10px;
+      border: 1px solid rgba(100, 255, 218, 0.2);
+    }
+    /* Keyboard */
+    #keyboard {
+      display: grid;
+      grid-template-rows: repeat(4, 1fr);
+      gap: 8px;
+      opacity: 0.8;
+      pointer-events: none;
+      width: 100%;
+      max-width: 700px;
+      margin: 25px auto;
+    }
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+    .key {
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: all 0.1s;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .key.active {
+      background: #64ffda;
+      transform: scale(0.95);
+      color: black;
+      box-shadow: 0 0 15px rgba(100, 255, 218, 0.5);
+    }
+    .key.incorrect {
+      background: #ff6b6b;
+      box-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+    }
+    /* Control Buttons */
+    .controls {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .control-btn {
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+    .control-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    .control-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    footer {
+      margin-top: 30px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+        margin: 10px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      #test-area {
+        font-size: 1.3rem;
+        line-height: 1.8rem;
+        padding: 20px;
+        max-height: 200px;
+      }
+      .stats {
+        font-size: 1rem;
+      }
+      .stat {
+        padding: 12px 15px;
+        min-width: 70px;
+      }
+      .key {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+      }
+      #keyboard {
+        gap: 5px;
+      }
+      .row {
+        gap: 5px;
+      }
+    }
+    /* Hide elements based on mode */
+    .english-mode #nepali-input,
+    .english-mode .word-display {
+      display: none;
+    }
+    .nepali-mode #quote-text,
+    .nepali-mode .cursor,
+    .nepali-mode #keyboard {
+      display: none;
+    }
+    .english-mode .word-display {
+      display: flex;
+    }
+    .nepali-mode .word-display {
+      display: flex;
+    }
+    /* Nepali Keyboard Styles */
+    .nepali-keyboard {
+      display: none; /* shown only in nepali-mode */
+      width: 100%;
+      max-width: 720px;
+      margin: 20px auto 0;
+      gap: 6px;
+      flex-direction: column;
+    }
+    .nepali-mode .nepali-keyboard {
+      display: flex;
+    }
+    .nk-row {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .nk-key {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      transition: background 0.15s, transform 0.1s;
+      user-select: none;
+      cursor: default;
+    }
+    .nk-key.active {
+      background: #64ffda;
+      color: #111;
+      transform: scale(0.95);
+    }
+    .nk-key.wrong {
+      background: #ff6b6b;
+    }
+    .nk-key.space {
+      flex: 1;
+      max-width: 260px;
+    }
+    /* hidden input keeps focus */
+    #nepali-hidden-input {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+      pointer-events: none;
+    }

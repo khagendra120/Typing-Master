@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Typing Master - English & नेपाली</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&family=Segoe+UI:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+   
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+
+  <style>
+   
+  </style>
+</head>
+<body class="english-mode">
+  <div class="container">
+    <h1>Typing Master</h1>
+    <p class="subtitle">Test your speed and accuracy in English & नेपाली</p>
+
+    <!-- Language Switch -->
+    <div class="language-switch">
+      <button class="lang-btn active" data-lang="english">🇺🇸 English</button>
+      <button class="lang-btn" data-lang="nepali">🇳🇵 नेपाली</button>
+    </div>
+
+    <!-- Time Mode Selector -->
+    <div class="time-mode">
+      <button class="time-btn" data-time="15">15s</button>
+      <button class="time-btn" data-time="30">30s</button>
+      <button class="time-btn active" data-time="60">60s</button>
+      <button class="time-btn" data-time="120">120s</button>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat">
+        <div id="wpm">0</div>
+        <div>WPM</div>
+      </div>
+      <div class="stat">
+        <div id="accuracy">100%</div>
+        <div>Acc</div>
+      </div>
+      <div class="stat">
+        <div id="time">60</div>
+        <div>sec</div>
+      </div>
+    </div>
+
+    <!-- Timer Display (for Nepali mode) -->
+    <div class="timer-display" id="timerDisplay" style="display: none;">⏳ Time left: 60s</div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+      <div class="progress" id="progress-bar"></div>
+    </div>
+
+    <!-- Test Area -->
+    <div id="test-area">
+      <!-- English Mode Content -->
+      <span id="quote-text"></span>
+      <span class="cursor"></span>
+
+      <!-- Nepali Mode Content -->
+      <div class="word-display" id="wordDisplay"></div>
+    </div>
+
+    <!-- Nepali Input -->
+    <input id="nepali-input" placeholder="यहाँ टाइप गर्नुहोस्..." />
+
+    <!-- Results -->
+    <div id="results"></div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button class="control-btn" onclick="restartTest()">🔄 Restart</button>
+    </div>
+
+    <!-- Keyboard (English mode only) -->
+    <div id="keyboard">
+      <div class="row" id="row-0"></div>
+      <div class="row" id="row-1"></div>
+      <div class="row" id="row-2"></div>
+    </div>
+  
+
+  <!-- Nepali Keyboard -->
+  <div id="nepali-keyboard" class="nepali-keyboard">
+    <div class="nk-row" id="nk-0"></div>
+    <div class="nk-row" id="nk-1"></div>
+    <div class="nk-row" id="nk-2"></div>
+    <div class="nk-row" id="nk-3"></div>
+  </div>
+</div>
+  <!-- Hidden input to capture Nepali romanized typing and keep focus -->
+  <input id="nepali-hidden-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+
+  <footer>
+    <p>Made with ❤️ by khagendra</p>
+    <p>Inspired by Monkeytype</p>
+  </footer>
+
+  <script>
+   
+  </script>
+</body>
+</html>
